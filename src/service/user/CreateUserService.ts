@@ -36,7 +36,6 @@ class CreateUserService {
                 email: true
             }
         })
-
         return user;
     }
 }
