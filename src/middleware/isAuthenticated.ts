@@ -11,7 +11,7 @@ export function isAuthenticated(req: Request, res: Response, next: NextFunction)
         return res.status(401).end();
     }
 
-    const [, token] = authToken.split('');
+    const [, token] = authToken.split(' ');
 
     const jwtSecret = process.env.JWT_SECRET;
     if (!jwtSecret) {
