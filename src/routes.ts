@@ -7,6 +7,7 @@ import { UpdateCourseController } from "./controller/course/UpdateCourseControll
 import { DeleteCourseController } from "./controller/course/DeleteCourseController";
 import { ListCourseController } from "./controller/course/ListCourseController";
 import { DetailCourseController } from "./controller/course/DetailCourseController";
+import { CreateGoalController } from "./controller/goal/CreateGoalController";
 
 const router = Router();
 
@@ -18,5 +19,7 @@ router.put("/course/:id", isAuthenticated, new UpdateCourseController().handle)
 router.delete("/course/:id", isAuthenticated, new DeleteCourseController().handle)
 router.get("/course/all", isAuthenticated, new ListCourseController().handle)
 router.get("/course/:id", isAuthenticated, new DetailCourseController().handle)
+
+router.post("/goal/:course_id", isAuthenticated, new CreateGoalController().handle)
 
 export { router };
