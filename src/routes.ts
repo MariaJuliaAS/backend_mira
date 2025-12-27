@@ -6,6 +6,7 @@ import { CreateCourseController } from "./controller/course/CreateCourseControll
 import { UpdateCourseController } from "./controller/course/UpdateCourseController";
 import { DeleteCourseController } from "./controller/course/DeleteCourseController";
 import { ListCourseController } from "./controller/course/ListCourseController";
+import { DetailCourseController } from "./controller/course/DetailCourseController";
 
 const router = Router();
 
@@ -16,5 +17,6 @@ router.post("/course", isAuthenticated, new CreateCourseController().handle)
 router.put("/course/:id", isAuthenticated, new UpdateCourseController().handle)
 router.delete("/course/:id", isAuthenticated, new DeleteCourseController().handle)
 router.get("/course/all", isAuthenticated, new ListCourseController().handle)
+router.get("/course/:id", isAuthenticated, new DetailCourseController().handle)
 
 export { router };
