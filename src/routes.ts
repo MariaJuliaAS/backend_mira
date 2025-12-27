@@ -5,6 +5,7 @@ import { isAuthenticated } from "./middleware/isAuthenticated";
 import { CreateCourseController } from "./controller/course/CreateCourseController";
 import { UpdateCourseController } from "./controller/course/UpdateCourseController";
 import { DeleteCourseController } from "./controller/course/DeleteCourseController";
+import { ListCourseController } from "./controller/course/ListCourseController";
 
 const router = Router();
 
@@ -14,5 +15,6 @@ router.post("/user/login", new AuthUserController().handle)
 router.post("/course", isAuthenticated, new CreateCourseController().handle)
 router.put("/course/:id", isAuthenticated, new UpdateCourseController().handle)
 router.delete("/course/:id", isAuthenticated, new DeleteCourseController().handle)
+router.get("/course/all", isAuthenticated, new ListCourseController().handle)
 
 export { router };
