@@ -9,6 +9,7 @@ import { ListCourseController } from "./controller/course/ListCourseController";
 import { DetailCourseController } from "./controller/course/DetailCourseController";
 import { CreateGoalController } from "./controller/goal/CreateGoalController";
 import { DeleteGoalController } from "./controller/goal/DeleteGoalController";
+import { ListGoalController } from "./controller/goal/ListGoalController";
 
 const router = Router();
 
@@ -23,5 +24,6 @@ router.get("/course/:id", isAuthenticated, new DetailCourseController().handle)
 
 router.post("/goal/:course_id", isAuthenticated, new CreateGoalController().handle)
 router.delete("/goal/:goal_id", isAuthenticated, new DeleteGoalController().handle)
+router.get("/goal/:course_id", isAuthenticated, new ListGoalController().handle)
 
 export { router };
