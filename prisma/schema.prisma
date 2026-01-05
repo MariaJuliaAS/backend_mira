@@ -36,9 +36,9 @@ model Course {
   user    User   @relation(fields: [user_id], references: [id])
   user_id String
 
-  goals      Goal[]
-  activities Activity[]
-  timers     Timer[]
+  goals     Goal[]
+  calendars Calendar[]
+  timers    Timer[]
 
   @@map("Courses")
 }
@@ -58,18 +58,19 @@ model Goal {
   @@map("Goals")
 }
 
-model Activity {
-  id         String    @id @default(uuid())
-  name       String
-  due_date   String
-  priority   String
-  created_at DateTime? @default(now())
-  updated_at DateTime  @updatedAt
+model Calendar {
+  id          String    @id @default(uuid())
+  name        String
+  date        String
+  type        String
+  description String
+  created_at  DateTime? @default(now())
+  updated_at  DateTime  @updatedAt
 
-  course    Course @relation(fields: [course_id], references: [id])
+  course    Course? @relation(fields: [course_id], references: [id])
   course_id String
 
-  @@map("Activities")
+  @@map("Calendars")
 }
 
 model Timer {
