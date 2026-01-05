@@ -13,6 +13,7 @@ import { ListGoalController } from "./controller/goal/ListGoalController";
 import { CreateTimerController } from "./controller/timer/CreateTimerController";
 import { EditTimerController } from "./controller/timer/EditTimerController";
 import { DeleteTimerController } from "./controller/timer/DeleteTimerController";
+import { ListTimerController } from "./controller/timer/ListTimerController";
 
 const router = Router();
 
@@ -32,5 +33,6 @@ router.get("/goal/:course_id", isAuthenticated, new ListGoalController().handle)
 router.post("/timer/:course_id", isAuthenticated, new CreateTimerController().handle)
 router.put("/timer/:id", isAuthenticated, new EditTimerController().handle)
 router.delete("/timer/:id", isAuthenticated, new DeleteTimerController().handle)
+router.get("/timer/:course_id", isAuthenticated, new ListTimerController().handle)
 
 export { router };
