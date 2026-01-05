@@ -15,6 +15,15 @@ class EditCommitmentService {
             throw new Error("Commitment ID is required");
         }
 
+        const commitmentAlreadyExists = await prisma.commitment.findFirst({
+            where: {
+                id
+            }
+        })
+        if (!commitmentAlreadyExists) {
+            throw new Error("Commitment not found");
+        }
+
         const commitment = await prisma.commitment.update({
             where: {
                 id
@@ -24,6 +33,11 @@ class EditCommitmentService {
                 date,
                 type,
                 description,
+                ...(course_id === null && {
+                    course: {
+                        disconnect: true
+                    }
+                }),
                 ...(course_id && {
                     course: {
                         connect: {
