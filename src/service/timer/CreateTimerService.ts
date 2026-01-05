@@ -26,7 +26,9 @@ class CreateTimerService {
 
         const clock = await prisma.timer.create({
             data: {
-                course_id,
+                course: {
+                    connect: { id: course_id }
+                },
                 time,
                 topic,
                 pages,

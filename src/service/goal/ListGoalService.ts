@@ -9,7 +9,9 @@ class ListGoalService {
 
         const goals = await prisma.goal.findMany({
             where: {
-                course_id
+                course: {
+                    id: course_id
+                }
             }
         })
         return goals;

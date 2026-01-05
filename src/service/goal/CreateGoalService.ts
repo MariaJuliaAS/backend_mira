@@ -20,7 +20,9 @@ class CreateGoalService {
                 description,
                 start_date,
                 end_date,
-                course_id
+                course: {
+                    connect: { id: course_id }
+                }
             }
         })
 

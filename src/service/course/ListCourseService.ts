@@ -9,7 +9,9 @@ class ListCourseService {
 
         const courses = await prisma.course.findMany({
             where: {
-                user_id
+                user: {
+                    id: user_id
+                }
             }
         })
         return courses;

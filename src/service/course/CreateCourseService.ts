@@ -25,7 +25,9 @@ class CreateCourseService {
             data: {
                 name,
                 color,
-                user_id
+                user: {
+                    connect: { id: user_id }
+                }
             }
         })
 

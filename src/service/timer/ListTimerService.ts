@@ -9,7 +9,9 @@ class ListTimerService {
 
         const timers = await prisma.timer.findMany({
             where: {
-                course_id
+                course: {
+                    id: course_id
+                }
             }
         });
 
