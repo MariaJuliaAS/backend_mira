@@ -21,7 +21,8 @@ model User {
   created_at DateTime? @default(now())
   updated_at DateTime  @updatedAt
 
-  courses Course[]
+  courses   Course[]
+  calendars Calendar[]
 
   @@map("Users")
 }
@@ -69,6 +70,9 @@ model Calendar {
 
   course    Course? @relation(fields: [course_id], references: [id])
   course_id String
+
+  user    User   @relation(fields: [user_id], references: [id])
+  user_id String
 
   @@map("Calendars")
 }
