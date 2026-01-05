@@ -17,6 +17,7 @@ import { ListTimerController } from "./controller/timer/ListTimerController";
 import { CreateCommitmentController } from "./controller/commitment/CreateCommitmentController";
 import { DeleteCommitmentController } from "./controller/commitment/DeleteCommitmentController";
 import { ListCommitmentController } from "./controller/commitment/ListCommitmentController";
+import { EditCommitmentController } from "./controller/commitment/EditCommitmentController";
 
 const router = Router();
 
@@ -41,5 +42,6 @@ router.get("/timer/:course_id", isAuthenticated, new ListTimerController().handl
 router.post("/commitment", isAuthenticated, new CreateCommitmentController().handle)
 router.delete("/commitment/:id", isAuthenticated, new DeleteCommitmentController().handle)
 router.get("/commitment", isAuthenticated, new ListCommitmentController().handle)
+router.put("/commitment/:id", isAuthenticated, new EditCommitmentController().handle)
 
 export { router };
