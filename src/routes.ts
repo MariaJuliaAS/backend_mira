@@ -14,6 +14,7 @@ import { CreateTimerController } from "./controller/timer/CreateTimerController"
 import { EditTimerController } from "./controller/timer/EditTimerController";
 import { DeleteTimerController } from "./controller/timer/DeleteTimerController";
 import { ListTimerController } from "./controller/timer/ListTimerController";
+import { CreateCommitmentController } from "./controller/commitment/CreateCommitmentController";
 
 const router = Router();
 
@@ -34,5 +35,7 @@ router.post("/timer/:course_id", isAuthenticated, new CreateTimerController().ha
 router.put("/timer/:id", isAuthenticated, new EditTimerController().handle)
 router.delete("/timer/:id", isAuthenticated, new DeleteTimerController().handle)
 router.get("/timer/:course_id", isAuthenticated, new ListTimerController().handle)
+
+router.post("/commitment", isAuthenticated, new CreateCommitmentController().handle)
 
 export { router };
