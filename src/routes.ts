@@ -18,11 +18,14 @@ import { CreateCommitmentController } from "./controller/commitment/CreateCommit
 import { DeleteCommitmentController } from "./controller/commitment/DeleteCommitmentController";
 import { ListCommitmentController } from "./controller/commitment/ListCommitmentController";
 import { EditCommitmentController } from "./controller/commitment/EditCommitmentController";
+import { CreateProfileController } from "./controller/profile/CreateProfileController";
 
 const router = Router();
 
 router.post("/user", new CreateUserController().handle)
 router.post("/user/login", new AuthUserController().handle)
+
+router.post("/profile", isAuthenticated, new CreateProfileController().handle)
 
 router.post("/course", isAuthenticated, new CreateCourseController().handle)
 router.put("/course/:id", isAuthenticated, new UpdateCourseController().handle)
