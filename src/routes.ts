@@ -23,11 +23,13 @@ import { EditProfileController } from "./controller/profile/EditProfileControlle
 import { DetailProfileController } from "./controller/profile/DetailProfileController";
 import { CreateGoalTopicController } from "./controller/goalTopic/CreateGoalTopicController";
 import { DeleteGoalTopicController } from "./controller/goalTopic/DeleteGoalTopicController";
+import { DetailUserController } from "./controller/user/DetailUserController";
 
 const router = Router();
 
 router.post("/user", new CreateUserController().handle)
 router.post("/user/login", new AuthUserController().handle)
+router.get('/user/me', isAuthenticated, new DetailUserController().handle)
 
 router.post("/profile", isAuthenticated, new CreateProfileController().handle)
 router.put("/profile/:id", isAuthenticated, new EditProfileController().handle)
