@@ -12,6 +12,14 @@ class ListCommitmentService {
                 user: {
                     id: user_id
                 }
+            },
+            include: {
+                course: {
+                    select: {
+                        id: true,
+                        name: true
+                    }
+                }
             }
         })
         return commitment;

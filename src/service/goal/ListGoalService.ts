@@ -12,6 +12,16 @@ class ListGoalService {
                 user: {
                     id: user_id
                 }
+            },
+            include: {
+                timers: true,
+                goalsTopcis: true,
+                course: {
+                    select: {
+                        id: true,
+                        name: true
+                    }
+                }
             }
         })
         return goals;

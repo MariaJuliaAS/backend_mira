@@ -19,6 +19,20 @@ class ListTimerService {
                         id: goal_id
                     }
                 })
+            },
+            include: {
+                course: {
+                    select: {
+                        id: true,
+                        name: true
+                    }
+                },
+                goal: {
+                    select: {
+                        id: true,
+                        name: true
+                    }
+                }
             }
         });
 

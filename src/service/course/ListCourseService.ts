@@ -12,6 +12,11 @@ class ListCourseService {
                 user: {
                     id: user_id
                 }
+            },
+            include: {
+                goals: true,
+                commitments: true,
+                timers: true
             }
         })
         return courses;
