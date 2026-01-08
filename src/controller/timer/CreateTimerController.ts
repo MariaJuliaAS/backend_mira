@@ -4,7 +4,7 @@ import { CreateTimerService } from "../../service/timer/CreateTimerService";
 
 class CreateTimerController {
     async handle(req: Request, res: Response) {
-        const { time, topic, pages, questions, correctQuestions, video } = req.body;
+        const { time, topic, pages, questions, correctQuestions, video, revision } = req.body;
         const { course_id } = req.params;
         const { goal_id } = req.params;
 
@@ -17,7 +17,8 @@ class CreateTimerController {
             pages,
             questions,
             correctQuestions,
-            video
+            video,
+            revision
         });
         return res.json(timer);
     }

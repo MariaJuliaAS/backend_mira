@@ -9,11 +9,11 @@ interface TimerRequest {
     questions?: number;
     correctQuestions?: number;
     video?: number;
-
+    revision: boolean;
 }
 
 class CreateTimerService {
-    async execute({ course_id, goal_id, time, topic, pages, questions, correctQuestions, video }: TimerRequest) {
+    async execute({ course_id, goal_id, time, topic, pages, questions, correctQuestions, video, revision }: TimerRequest) {
         if (!course_id && !goal_id) {
             throw new Error("Course ID or Goal ID is required");
         }
@@ -43,7 +43,8 @@ class CreateTimerService {
                 pages: pages ?? 0,
                 questions: questions ?? 0,
                 correctQuestions: correctQuestions ?? 0,
-                video: video ?? 0
+                video: video ?? 0,
+                revision
             }
         })
         return clock;

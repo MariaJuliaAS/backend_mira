@@ -106,6 +106,7 @@ model Timer {
   questions        Int?
   correctQuestions Int?
   video            Int?
+  revision         Boolean   @default(false)
   created_at       DateTime? @default(now())
   updated_at       DateTime  @updatedAt
 
