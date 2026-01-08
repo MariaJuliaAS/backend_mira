@@ -21,6 +21,7 @@ import { EditCommitmentController } from "./controller/commitment/EditCommitment
 import { CreateProfileController } from "./controller/profile/CreateProfileController";
 import { EditProfileController } from "./controller/profile/EditProfileController";
 import { DetailProfileController } from "./controller/profile/DetailProfileController";
+import { CreateGoalTopicController } from "./controller/goalTopic/CreateGoalTopicController";
 
 const router = Router();
 
@@ -41,6 +42,8 @@ router.post("/goal", isAuthenticated, new CreateGoalController().handle)
 router.post("/goal/courses/:course_id", isAuthenticated, new CreateGoalController().handle)
 router.delete("/goal/:goal_id", isAuthenticated, new DeleteGoalController().handle)
 router.get("/goal/:user_id", isAuthenticated, new ListGoalController().handle)
+
+router.post("/goal/topic/:goal_id", isAuthenticated, new CreateGoalTopicController().handle)
 
 router.post("/timer/courses/:course_id", isAuthenticated, new CreateTimerController().handle)
 router.post("/timer/goals/:goal_id", isAuthenticated, new CreateTimerController().handle)
