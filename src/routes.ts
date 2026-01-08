@@ -37,6 +37,7 @@ router.delete("/course/:id", isAuthenticated, new DeleteCourseController().handl
 router.get("/course/all", isAuthenticated, new ListCourseController().handle)
 router.get("/course/:id", isAuthenticated, new DetailCourseController().handle)
 
+router.post("/goal", isAuthenticated, new CreateGoalController().handle)
 router.post("/goal/:course_id", isAuthenticated, new CreateGoalController().handle)
 router.delete("/goal/:goal_id", isAuthenticated, new DeleteGoalController().handle)
 router.get("/goal/:course_id", isAuthenticated, new ListGoalController().handle)

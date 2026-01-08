@@ -3,25 +3,29 @@ import { prisma } from "../../prisma/prisma";
 interface GoalRequest {
     name: string;
     description: string;
-    start_date: string;
     end_date: string;
-    course_id: string;
+    course_id?: string;
+    user_id: string;
 }
 
 class CreateGoalService {
-    async execute({ name, description, start_date, end_date, course_id }: GoalRequest) {
-        if (!course_id) {
-            throw new Error("The course id is required")
+    async execute({ name, description, end_date, course_id, user_id }: GoalRequest) {
+        if (!user_id) {
+            throw new Error("The user id is required")
         }
 
         const goal = await prisma.goal.create({
             data: {
                 name,
                 description,
-                start_date,
                 end_date,
-                course: {
-                    connect: { id: course_id }
+                ...(course_id && {
+                    course: {
+                        connect: { id: course_id }
+                    }
+                }),
+                user: {
+                    connect: { id: user_id }
                 }
             }
         })

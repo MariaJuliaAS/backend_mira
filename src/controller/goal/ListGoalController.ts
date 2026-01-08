@@ -4,10 +4,10 @@ import { ListGoalService } from "../../service/goal/ListGoalService";
 
 class ListGoalController {
     async handle(req: Request, res: Response) {
-        const { course_id } = req.params;
+        const user_id = req.user_id;
 
         const listGoalService = new ListGoalService();
-        const goals = await listGoalService.execute(course_id);
+        const goals = await listGoalService.execute(user_id);
 
         return res.json(goals);
     }

@@ -2,15 +2,15 @@ import { prisma } from "../../prisma/prisma"
 
 
 class ListGoalService {
-    async execute(course_id: string) {
-        if (!course_id) {
-            throw new Error("The course id is required")
+    async execute(user_id: string) {
+        if (!user_id) {
+            throw new Error("The user id is required")
         }
 
         const goals = await prisma.goal.findMany({
             where: {
-                course: {
-                    id: course_id
+                user: {
+                    id: user_id
                 }
             }
         })
