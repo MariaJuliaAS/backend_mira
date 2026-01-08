@@ -20,6 +20,7 @@ import { ListCommitmentController } from "./controller/commitment/ListCommitment
 import { EditCommitmentController } from "./controller/commitment/EditCommitmentController";
 import { CreateProfileController } from "./controller/profile/CreateProfileController";
 import { EditProfileController } from "./controller/profile/EditProfileController";
+import { DetailProfileController } from "./controller/profile/DetailProfileController";
 
 const router = Router();
 
@@ -28,6 +29,7 @@ router.post("/user/login", new AuthUserController().handle)
 
 router.post("/profile", isAuthenticated, new CreateProfileController().handle)
 router.put("/profile/:id", isAuthenticated, new EditProfileController().handle)
+router.get("/profile/:id", isAuthenticated, new DetailProfileController().handle)
 
 router.post("/course", isAuthenticated, new CreateCourseController().handle)
 router.put("/course/:id", isAuthenticated, new UpdateCourseController().handle)
