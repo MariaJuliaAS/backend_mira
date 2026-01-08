@@ -99,14 +99,15 @@ model Commitment {
 }
 
 model Timer {
-  id         String    @id @default(uuid())
-  time       Int
-  topic      String
-  pages      Int
-  questions  Int
-  video      Int
-  created_at DateTime? @default(now())
-  updated_at DateTime  @updatedAt
+  id               String    @id @default(uuid())
+  time             Int
+  topic            String
+  pages            Int?
+  questions        Int?
+  correctQuestions Int?
+  video            Int?
+  created_at       DateTime? @default(now())
+  updated_at       DateTime  @updatedAt
 
   course    Course? @relation(fields: [course_id], references: [id])
   course_id String?

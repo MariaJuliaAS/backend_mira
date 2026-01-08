@@ -38,14 +38,16 @@ router.get("/course/all", isAuthenticated, new ListCourseController().handle)
 router.get("/course/:id", isAuthenticated, new DetailCourseController().handle)
 
 router.post("/goal", isAuthenticated, new CreateGoalController().handle)
-router.post("/goal/:course_id", isAuthenticated, new CreateGoalController().handle)
+router.post("/goal/courses/:course_id", isAuthenticated, new CreateGoalController().handle)
 router.delete("/goal/:goal_id", isAuthenticated, new DeleteGoalController().handle)
-router.get("/goal/:course_id", isAuthenticated, new ListGoalController().handle)
+router.get("/goal/:course_id", isAuthenticated, new ListGoalController().handle) //para listar é apartir do user_id
 
-router.post("/timer/:course_id", isAuthenticated, new CreateTimerController().handle)
+router.post("/timer/courses/:course_id", isAuthenticated, new CreateTimerController().handle)
+router.post("/timer/goals/:goal_id", isAuthenticated, new CreateTimerController().handle)
 router.put("/timer/:id", isAuthenticated, new EditTimerController().handle)
 router.delete("/timer/:id", isAuthenticated, new DeleteTimerController().handle)
-router.get("/timer/:course_id", isAuthenticated, new ListTimerController().handle)
+router.get("/timer/courses/:course_id", isAuthenticated, new ListTimerController().handle)
+router.get("/timer/goals/:goal_id", isAuthenticated, new ListTimerController().handle)
 
 router.post("/commitment", isAuthenticated, new CreateCommitmentController().handle)
 router.delete("/commitment/:id", isAuthenticated, new DeleteCommitmentController().handle)

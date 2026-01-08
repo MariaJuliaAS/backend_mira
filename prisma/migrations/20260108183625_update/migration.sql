@@ -1,0 +1,5 @@
+-- AlterTable
+ALTER TABLE "Timers" ADD COLUMN     "correctQuestions" INTEGER,
+ALTER COLUMN "pages" DROP NOT NULL,
+ALTER COLUMN "questions" DROP NOT NULL,
+ALTER COLUMN "video" DROP NOT NULL;
