@@ -75,9 +75,22 @@ model Goal {
   user    User   @relation(fields: [user_id], references: [id])
   user_id String
 
-  timers Timer[]
+  timers      Timer[]
+  goalsTopcis GoalTopic[]
 
   @@map("Goals")
+}
+
+model GoalTopic {
+  id         String    @id @default(uuid())
+  name       String
+  created_at DateTime? @default(now())
+  updated_at DateTime  @updatedAt
+
+  goal    Goal   @relation(fields: [goal_id], references: [id])
+  goal_id String
+
+  @@map("GoalTopics")
 }
 
 model Commitment {
