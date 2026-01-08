@@ -40,7 +40,7 @@ router.get("/course/:id", isAuthenticated, new DetailCourseController().handle)
 router.post("/goal", isAuthenticated, new CreateGoalController().handle)
 router.post("/goal/courses/:course_id", isAuthenticated, new CreateGoalController().handle)
 router.delete("/goal/:goal_id", isAuthenticated, new DeleteGoalController().handle)
-router.get("/goal/:course_id", isAuthenticated, new ListGoalController().handle) //para listar é apartir do user_id
+router.get("/goal/:user_id", isAuthenticated, new ListGoalController().handle)
 
 router.post("/timer/courses/:course_id", isAuthenticated, new CreateTimerController().handle)
 router.post("/timer/goals/:goal_id", isAuthenticated, new CreateTimerController().handle)
