@@ -2,13 +2,12 @@ import { prisma } from "../../prisma/prisma";
 
 interface CourseRequest {
     name: string;
-    color: string;
     teacher?: string;
     user_id: string;
 }
 
 class CreateCourseService {
-    async execute({ name, color, teacher, user_id }: CourseRequest) {
+    async execute({ name, teacher, user_id }: CourseRequest) {
         if (!user_id) {
             throw new Error("The user id is required")
         }
@@ -25,7 +24,6 @@ class CreateCourseService {
         const course = await prisma.course.create({
             data: {
                 name,
-                color,
                 teacher: teacher ?? null,
                 user: {
                     connect: { id: user_id }

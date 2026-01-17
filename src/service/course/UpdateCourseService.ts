@@ -3,12 +3,11 @@ import { prisma } from "../../prisma/prisma";
 interface CourseRequest {
     id: string;
     name: string;
-    color: string;
     teacher?: string;
 }
 
 class UpdateCourseService {
-    async execute({ id, name, color, teacher }: CourseRequest) {
+    async execute({ id, name, teacher }: CourseRequest) {
         if (!id) {
             throw new Error("Id not found or inexistent")
         }
@@ -26,7 +25,6 @@ class UpdateCourseService {
             },
             data: {
                 name,
-                color,
                 teacher
             }
         })

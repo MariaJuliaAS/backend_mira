@@ -46,7 +46,6 @@ model Profile {
 model Course {
   id         String    @id @default(uuid())
   name       String
-  color      String
   teacher    String?
   created_at DateTime? @default(now())
   updated_at DateTime  @updatedAt
