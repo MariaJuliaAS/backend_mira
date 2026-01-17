@@ -68,7 +68,7 @@ model Goal {
   created_at  DateTime? @default(now())
   updated_at  DateTime  @updatedAt
 
-  course    Course? @relation(fields: [course_id], references: [id])
+  course    Course? @relation(fields: [course_id], references: [id], onDelete: Cascade)
   course_id String?
 
   user    User   @relation(fields: [user_id], references: [id])
@@ -86,7 +86,7 @@ model GoalTopic {
   created_at DateTime? @default(now())
   updated_at DateTime  @updatedAt
 
-  goal    Goal   @relation(fields: [goal_id], references: [id])
+  goal    Goal   @relation(fields: [goal_id], references: [id], onDelete: Cascade)
   goal_id String
 
   @@map("GoalTopics")
@@ -101,7 +101,7 @@ model Commitment {
   created_at  DateTime? @default(now())
   updated_at  DateTime  @updatedAt
 
-  course    Course? @relation(fields: [course_id], references: [id])
+  course    Course? @relation(fields: [course_id], references: [id], onDelete: Cascade)
   course_id String?
 
   user    User   @relation(fields: [user_id], references: [id])
@@ -122,10 +122,10 @@ model Timer {
   created_at       DateTime? @default(now())
   updated_at       DateTime  @updatedAt
 
-  course    Course? @relation(fields: [course_id], references: [id])
+  course    Course? @relation(fields: [course_id], references: [id], onDelete: Cascade)
   course_id String?
 
-  goal    Goal?   @relation(fields: [goal_id], references: [id])
+  goal    Goal?   @relation(fields: [goal_id], references: [id], onDelete: Cascade)
   goal_id String?
 
   @@map("Timers")
