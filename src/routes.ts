@@ -25,6 +25,7 @@ import { CreateGoalTopicController } from "./controller/goalTopic/CreateGoalTopi
 import { DeleteGoalTopicController } from "./controller/goalTopic/DeleteGoalTopicController";
 import { DetailUserController } from "./controller/user/DetailUserController";
 import { DetailCommitmentController } from "./controller/commitment/DetailCommitmentController";
+import { UpdateGoalTopicControllet } from "./controller/goalTopic/UpdateGoalTopicControllet";
 
 const router = Router();
 
@@ -45,10 +46,11 @@ router.get("/course/:id", isAuthenticated, new DetailCourseController().handle)
 router.post("/goal", isAuthenticated, new CreateGoalController().handle)
 router.post("/goal/courses/:course_id", isAuthenticated, new CreateGoalController().handle)
 router.delete("/goal/:goal_id", isAuthenticated, new DeleteGoalController().handle)
-router.get("/goal/:user_id", isAuthenticated, new ListGoalController().handle)
+router.get("/goal", isAuthenticated, new ListGoalController().handle)
 
 router.post("/goal/topic/:goal_id", isAuthenticated, new CreateGoalTopicController().handle)
 router.delete("/goal/topic/:id", isAuthenticated, new DeleteGoalTopicController().handle)
+router.put("/goal/topic/:id", isAuthenticated, new UpdateGoalTopicControllet().handle)
 
 router.post("/timer/courses/:course_id", isAuthenticated, new CreateTimerController().handle)
 router.post("/timer/goals/:goal_id", isAuthenticated, new CreateTimerController().handle)

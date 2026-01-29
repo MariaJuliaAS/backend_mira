@@ -83,6 +83,7 @@ model Goal {
 model GoalTopic {
   id         String    @id @default(uuid())
   name       String
+  completed  Boolean   @default(false)
   created_at DateTime? @default(now())
   updated_at DateTime  @updatedAt
 
