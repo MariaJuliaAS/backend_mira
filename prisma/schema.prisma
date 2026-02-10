@@ -25,6 +25,7 @@ model User {
   commitments Commitment[]
   profiles    Profile?
   goals       Goal[]
+  timers      Timer[]
 
   @@map("Users")
 }
@@ -128,6 +129,9 @@ model Timer {
 
   goal    Goal?   @relation(fields: [goal_id], references: [id], onDelete: Cascade)
   goal_id String?
+
+  user    User   @relation(fields: [user_id], references: [id])
+  user_id String
 
   @@map("Timers")
 }

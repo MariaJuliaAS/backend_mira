@@ -8,6 +8,11 @@ class ListAllTimerService {
         }
 
         const timers = await prisma.timer.findMany({
+            where: {
+                user: {
+                    id: user_id
+                }
+            },
             include: {
                 course: {
                     select: {
@@ -21,6 +26,9 @@ class ListAllTimerService {
                         name: true
                     }
                 }
+            },
+            orderBy: {
+                updated_at: "desc"
             }
         })
         return timers;
