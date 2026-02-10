@@ -10,10 +10,11 @@ interface TimerRequest {
     correctQuestions?: number;
     video?: number;
     revision: boolean;
+    user_id: string;
 }
 
 class CreateTimerService {
-    async execute({ course_id, goal_id, time, topic, pages, questions, correctQuestions, video, revision }: TimerRequest) {
+    async execute({ course_id, goal_id, time, topic, pages, questions, correctQuestions, video, revision, user_id }: TimerRequest) {
         if (!course_id && !goal_id) {
             throw new Error("Course ID or Goal ID is required");
         }
@@ -28,6 +29,9 @@ class CreateTimerService {
 
         const clock = await prisma.timer.create({
             data: {
+                user: {
+                    connect: { id: user_id }
+                },
                 ...(course_id && {
                     course: {
                         connect: { id: course_id }

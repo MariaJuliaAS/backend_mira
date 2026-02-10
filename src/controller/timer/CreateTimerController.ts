@@ -7,6 +7,7 @@ class CreateTimerController {
         const { time, topic, pages, questions, correctQuestions, video, revision } = req.body;
         const { course_id } = req.params;
         const { goal_id } = req.params;
+        const user_id = req.user_id;
 
         const createTimerService = new CreateTimerService();
         const timer = await createTimerService.execute({
@@ -18,7 +19,8 @@ class CreateTimerController {
             questions,
             correctQuestions,
             video,
-            revision
+            revision,
+            user_id
         });
         return res.json(timer);
     }
