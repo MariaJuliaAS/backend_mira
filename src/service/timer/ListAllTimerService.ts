@@ -28,7 +28,7 @@ class ListAllTimerService {
                 }
             },
             orderBy: {
-                updated_at: "desc"
+                created_at: "desc"
             }
         })
         return timers;
