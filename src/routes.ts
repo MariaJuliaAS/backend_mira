@@ -28,11 +28,12 @@ import { DetailCommitmentController } from "./controller/commitment/DetailCommit
 import { UpdateGoalTopicControllet } from "./controller/goalTopic/UpdateGoalTopicControllet";
 import { ListAllTimerController } from "./controller/timer/ListAllTimerController";
 import { UserStatsController } from "./controller/user/UserStatsController";
+import { authLimiter } from "./middleware/rateLimiter";
 
 const router = Router();
 
 router.post("/user", new CreateUserController().handle)
-router.post("/user/login", new AuthUserController().handle)
+router.post("/user/login", authLimiter, new AuthUserController().handle)
 router.get('/user/me', isAuthenticated, new DetailUserController().handle)
 router.get('/user/stats', isAuthenticated, new UserStatsController().handle)
 
