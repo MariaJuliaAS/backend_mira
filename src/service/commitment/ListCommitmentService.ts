@@ -20,6 +20,9 @@ class ListCommitmentService {
                         name: true
                     }
                 }
+            },
+            orderBy: {
+                created_at: "desc"
             }
         })
         return commitment;

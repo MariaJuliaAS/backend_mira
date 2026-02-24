@@ -22,6 +22,9 @@ class ListGoalService {
                         name: true
                     }
                 }
+            },
+            orderBy: {
+                created_at: "desc"
             }
         })
         return goals;
