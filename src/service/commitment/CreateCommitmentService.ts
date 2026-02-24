@@ -2,7 +2,7 @@ import { prisma } from "../../prisma/prisma";
 
 interface CommitmentRequest {
     name: string;
-    date: string;
+    date: Date;
     type: string;
     description?: string | null;
     user_id: string;

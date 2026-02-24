@@ -3,7 +3,7 @@ import { prisma } from "../../prisma/prisma";
 interface GoalRequest {
     name: string;
     description: string;
-    end_date: string;
+    end_date: Date;
     course_id?: string;
     user_id: string;
 }
